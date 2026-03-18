@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isuru Udayakumara | Digital Marketing & E-Commerce Strategist</title>
+    <title>Isuru Udayakumara | Digital Marketing Specialist</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -18,207 +18,143 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            line-height: 1.6; 
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        /* --- Animated Background Elements --- */
-        .glow-top {
-            position: fixed; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-            top: -200px; right: -100px; z-index: -1;
-        }
-
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
+        .glow-top { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%); top: -200px; right: -100px; z-index: -1; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
 
-        /* --- Header Section --- */
-        header { 
-            text-align: center; 
-            padding: 6rem 0 4rem; 
-            animation: fadeIn 1.2s ease-out;
-        }
-
-        .profile-wrapper { position: relative; display: inline-block; margin-bottom: 2rem; }
-        .profile-img {
-            width: 160px; height: 160px; border-radius: 50%;
-            object-fit: cover; border: 2px solid var(--accent);
-            padding: 6px; background: var(--bg);
-            box-shadow: 0 0 40px var(--accent-glow);
-        }
+        header { text-align: center; padding: 6rem 0 4rem; animation: fadeIn 1.2s ease-out; }
+        .profile-img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); padding: 6px; background: var(--bg); box-shadow: 0 0 40px var(--accent-glow); margin-bottom: 2rem; }
 
         h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 0.5rem; }
-        .tagline { 
-            color: var(--accent); font-weight: 600; text-transform: uppercase; 
-            font-size: 0.85rem; letter-spacing: 3px; margin-bottom: 1.5rem;
-        }
-
-        /* --- Experience & Project Cards --- */
+        .tagline { color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 3px; margin-bottom: 1.5rem; }
         .section-title { font-size: 1.8rem; margin: 4rem 0 2rem; border-left: 4px solid var(--accent); padding-left: 1rem; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.5rem; }
 
-        .card {
-            background: var(--card-bg); border: 1px solid var(--glass-border);
-            padding: 2rem; border-radius: 20px; backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0; transform: translateY(30px);
-        }
-
+        .card { background: var(--card-bg); border: 1px solid var(--glass-border); padding: 2rem; border-radius: 20px; backdrop-filter: blur(10px); transition: all 0.4s ease; opacity: 0; transform: translateY(30px); }
         .card.visible { opacity: 1; transform: translateY(0); }
         .card:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.05); transform: translateY(-8px); }
 
-        .metric-badge {
-            background: rgba(59, 130, 246, 0.15); color: var(--accent);
-            padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700;
-            display: inline-block; margin-bottom: 1rem; border: 1px solid rgba(59, 130, 246, 0.3);
-        }
+        .metric-badge { background: rgba(59, 130, 246, 0.15); color: var(--accent); padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; display: inline-block; margin-bottom: 1rem; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .skill-tag { display: inline-block; background: rgba(255,255,255,0.05); padding: 5px 12px; border-radius: 8px; font-size: 0.8rem; margin: 4px; border: 1px solid var(--glass-border); color: var(--text-dim); }
+        
+        .lang-badge { font-size: 0.75rem; color: var(--text-dim); border: 1px solid var(--glass-border); padding: 2px 8px; border-radius: 4px; margin-right: 5px; }
 
-        .skill-tag {
-            display: inline-block; background: rgba(255,255,255,0.05);
-            padding: 5px 12px; border-radius: 8px; font-size: 0.8rem;
-            margin: 4px; border: 1px solid var(--glass-border); color: var(--text-dim);
-        }
-
-        /* --- Conversion Tools --- */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; background-color: #25d366;
-            color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none;
-            display: flex; align-items: center; gap: 12px;
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4); z-index: 1000;
-            font-weight: 700; transition: all 0.3s ease;
-        }
-        .whatsapp-float:hover { transform: scale(1.08); background-color: #1ebe57; }
-
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; display: flex; align-items: center; gap: 12px; box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4); z-index: 1000; font-weight: 700; transition: all 0.3s ease; }
         footer { text-align: center; padding: 6rem 0 4rem; color: var(--text-dim); font-size: 0.9rem; border-top: 1px solid var(--glass-border); }
-
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .whatsapp-float span { display: none; }
-            .whatsapp-float { padding: 18px; border-radius: 50%; }
-        }
     </style>
 </head>
 <body>
-
     <div class="glow-top"></div>
-    
     <div class="container">
         <header>
-            <div class="profile-wrapper">
-                <img src="YOUR_UPLOADED_IMAGE_URL" alt="Isuru Udayakumara" class="profile-img">
-            </div>
-            <h1>Isuru Udayakumara <span style="font-weight: 300; font-size: 1.5rem; color: var(--text-dim);">(MSc)</span></h1>
-            <p class="tagline">Digital Marketing • E-Commerce • AI Solutions</p>
-            <p style="max-width: 650px; margin: 0 auto; color: var(--text-dim);">
-                Transforming digital storefronts through technical SEO and high-performance cinematography. 
-                Bridging the gap between aesthetic visual storytelling and data-driven ROI.
+            <img src="YOUR_PROFILE_IMAGE_URL" alt="Isuru Udayakumara" class="profile-img">
+            <h1>Isuru Udayakumara</h1>
+            <p class="tagline">Digital Marketing Specialist</p>
+            <p style="max-width: 700px; margin: 0 auto; color: var(--text-dim);">
+                Data-driven Digital Strategist with 6+ years of experience in performance marketing, e-commerce optimization, and digital transformation[cite: 4]. Specialist in building growth systems and leading cross-functional teams for multi-industry brands[cite: 5].
             </p>
         </header>
 
         <main>
-            <h2 class="section-title">Strategic Projects</h2>
+            <h2 class="section-title">Professional Milestones</h2>
             <div class="grid">
                 <div class="card">
-                    <div class="metric-badge">ROI: +40% Organic Growth</div>
-                    <h3>BAG.LK SEO Architecture</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 10px;">
-                        Architected a 22-slide enterprise SOP for WooCommerce product creation. 
-                        Implemented RankMath schemas and image optimization protocols resulting in a 
-                        significant lift in search engine visibility and listing compliance.
+                    <div class="metric-badge">+48% Sales Growth</div>
+                    <h3>Omnichannel Excellence</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-dim);">Directed digital + retail integration at The Factory Outlet, achieving 48% sales growth and 100% footfall increase[cite: 28].</p>
+                </div>
+                <div class="card">
+                    <div class="metric-badge">+200% Awareness</div>
+                    <h3>Experiential Marketing</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-dim);">Managed seasonal campaigns resulting in a 200% digital awareness uplift through creative experiential strategies[cite: 28, 29].</p>
+                </div>
+                <div class="card">
+                    <div class="metric-badge">Transformation Lead</div>
+                    <h3>Homelands Group</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-dim);">Currently leading growth strategy and digital transformation for multiple premium real estate brands[cite: 24].</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Career Experience</h2>
+            <div class="grid">
+                <div class="card">
+                    <strong style="color: var(--accent);">Digital Marketing Specialist</strong>
+                    <p style="font-size: 0.85rem;">Homelands Group | Oct 2024 – Present [cite: 8, 9]</p>
+                    <ul style="font-size: 0.85rem; color: var(--text-dim); margin: 10px 0 0 15px;">
+                        <li>Managing CRM workflows and cross-channel revenue systems[cite: 25].</li>
+                        <li>Developing full-funnel digital performance frameworks[cite: 25].</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <strong style="color: var(--accent);">Digital Marketing & E-Com Specialist</strong>
+                    <p style="font-size: 0.85rem;">The Factory Outlet | 2022 – 2024 [cite: 26, 27]</p>
+                    <ul style="font-size: 0.85rem; color: var(--text-dim); margin: 10px 0 0 15px;">
+                        <li>Directed omnichannel strategy across retail and digital platforms[cite: 28].</li>
+                        <li>Managed performance dashboards and seasonal e-commerce operations[cite: 29].</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Academic Background</h3>
+                    <p style="font-size: 0.9rem; margin-top: 10px;">
+                        <strong>MSc in Digital Marketing</strong><br>Asia e University (2024-2025) [cite: 15, 17, 18]<br><br>
+                        <strong>BSc in Business Management</strong><br>Cardiff Metropolitan University (2021-2022) [cite: 19, 21]
                     </p>
                 </div>
-
                 <div class="card">
-                    <div class="metric-badge">Retention: +15% Boost</div>
-                    <h3>Growth Strategy & Gamification</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 10px;">
-                        Designed a 15-slide acquisition framework focused on high-value user retention 
-                        via interactive gamification loops and Meta carousel optimization for luxury e-commerce.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <div class="metric-badge">CPA: -22% Reduction</div>
-                    <h3>YouTube Ad Optimization</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 10px;">
-                        Engineered a budget-justified campaign using 5-second non-skippable YouTube formats. 
-                        Leveraged high-contrast cinematography to maximize brand recall within minimal duration.
+                    <h3>Specialized Certifications</h3>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-dim);">
+                        <strong>Semrush Academy</strong><br>Crafting a Winning SEO Strategy: A Guide for In-House Marketers (2024-2025) [cite: 22, 23]
                     </p>
                 </div>
             </div>
 
-            <h2 class="section-title">Professional Path</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Experience</h3>
-                    <div style="margin-top: 1.5rem;">
-                        <strong style="color: var(--accent);">Manager - Digital Marketing</strong>
-                        <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">BAG.LK • 2025 – Present</p>
-                        <ul style="font-size: 0.85rem; color: var(--text-dim); margin-left: 1rem;">
-                            <li>Leading SEO strategy and Meta/Google Merchant compliance.</li>
-                            <li>Developed technical SOPs for product creation and digital workflows.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>Education & Skills</h3>
-                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">
-                        <strong>MSc in Digital Marketing</strong><br>
-                        <span style="color: var(--text-dim);">Asia e University</span>
-                    </p>
-                    <div style="margin-top: 1rem;">
-                        <span class="skill-tag">Technical SEO</span>
-                        <span class="skill-tag">Google Ads</span>
-                        <span class="skill-tag">WooCommerce</span>
-                        <span class="skill-tag">AI in Marketing</span>
-                        <span class="skill-tag">Cinematography</span>
-                        <span class="skill-tag">RankMath</span>
-                    </div>
+            <h2 class="section-title">Core Expertise</h2>
+            <div class="card" style="width: 100%;">
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <span class="skill-tag">Performance Marketing [cite: 4]</span>
+                    <span class="skill-tag">E-Commerce Optimization [cite: 4]</span>
+                    <span class="skill-tag">CRM Implementation [cite: 4]</span>
+                    <span class="skill-tag">SEO Strategy [cite: 23]</span>
+                    <span class="skill-tag">Digital Transformation [cite: 4]</span>
+                    <span class="skill-tag">Analytics [cite: 4]</span>
+                    <span class="skill-tag">Omnichannel Strategy [cite: 4]</span>
                 </div>
             </div>
 
             <div id="contact" style="text-align: center; padding: 4rem 0;">
-                <h2 style="margin-bottom: 1rem;">Let's Connect</h2>
-                <p style="color: var(--text-dim); margin-bottom: 2rem;">Ready to scale your digital presence? Reach out via any platform below.</p>
+                <h2 style="margin-bottom: 1rem;">Global Reach</h2>
+                <div style="margin-bottom: 2rem;">
+                    <span class="lang-badge">English</span>
+                    <span class="lang-badge">Sinhala</span>
+                    <span class="lang-badge">Tamil</span> [cite: 37, 38, 39]
+                </div>
                 <div style="display: flex; justify-content: center; gap: 2rem; font-size: 1.5rem;">
-                    <a href="https://web.facebook.com/isuru.uk123/" target="_blank" style="color: var(--text-main);"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/its.isuru/" target="_blank" style="color: var(--text-main);"><i class="fab fa-instagram"></i></a>
+                    <a href="https://isuruudayakumara.com" target="_blank" style="color: var(--text-main);"><i class="fas fa-globe"></i></a>
                     <a href="mailto:isuru.uk123@gmail.com" style="color: var(--text-main);"><i class="fas fa-envelope"></i></a>
+                    <a href="https://web.facebook.com/isuru.uk123/" target="_blank" style="color: var(--text-main);"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
         </main>
 
         <footer>
-            <p>&copy; 2026 Isuru Udayakumara | +94 77 919 4409</p>
-            <p style="font-size: 0.75rem; margin-top: 0.5rem; opacity: 0.5;">Colombo, Sri Lanka</p>
+            <p>&copy; 2026 Isuru Udayakumara | +94 77 919 4409 [cite: 10]</p>
+            <p style="font-size: 0.75rem; margin-top: 0.5rem; opacity: 0.5;">Colombo, Sri Lanka [cite: 13]</p>
         </footer>
     </div>
 
-    <a href="https://wa.me/94779194409?text=Hi%20Isuru,%20I%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project." 
-       class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-        <span>Chat on WhatsApp</span>
+    <a href="https://wa.me/94779194409" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i><span>Connect Instantly</span>
     </a>
 
     <script>
-        // Intersection Observer for scroll-reveal animations
-        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
         document.querySelectorAll('.card').forEach(card => observer.observe(card));
     </script>
 </body>
