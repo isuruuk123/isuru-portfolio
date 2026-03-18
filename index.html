@@ -23,21 +23,22 @@ overflow:hidden;
 
 .video-bg iframe{
 position:absolute;
-top:50%;left:50%;
+top:50%;
+left:50%;
 width:130vw;
 height:73vw;
 min-height:100vh;
 min-width:177vh;
 transform:translate(-50%,-50%);
 z-index:-2;
-filter:brightness(1.1) contrast(1.1);
+filter:brightness(1.2) contrast(1.2) saturate(1.3);
+transition: transform 10s ease-in-out;
+animation: zoom 20s infinite alternate;
 }
 
-.overlay{
-position:absolute;
-width:100%;height:100%;
-background:linear-gradient(180deg,transparent 20%, #050505 95%);
-z-index:-1;
+@keyframes zoom {
+  0% { transform: translate(-50%,-50%) scale(1); }
+  100% { transform: translate(-50%,-50%) scale(1.05); }
 }
 
 /* PROFILE */
@@ -48,7 +49,8 @@ gap:20px;
 }
 
 .profile img{
-width:120px;height:120px;
+width:120px;
+height:120px;
 border-radius:50%;
 border:4px solid #fff;
 object-fit:cover;
@@ -136,11 +138,9 @@ color:#777;
 <iframe src="https://www.youtube.com/embed/V328AMkg5XQ?autoplay=1&mute=1&controls=0&loop=1&playlist=V328AMkg5XQ&playsinline=1"></iframe>
 </div>
 
-<div class="overlay"></div>
-
 <div>
 <div class="profile">
-<img src="https://imgur.com/a/Bf23oVm">
+<img src="https://i.imgur.com/YOURIMAGE.jpg">
 <div>
 <h1>Isuru Udayakumara (MSc)</h1>
 <p>7+ Years Digital Marketing & E Commerce Specialist</p>
@@ -199,7 +199,7 @@ color:#777;
 <section class="cta">
 <h2>Let’s Work Together</h2>
 
-<a class="btn" href="https://wa.me/94779194409" target="_blank">
+<a class="btn" href="https://wa.me/YOURNUMBER" target="_blank">
 Message Me on WhatsApp
 </a>
 
