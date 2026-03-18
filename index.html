@@ -17,7 +17,7 @@ body{
   position:relative;
 }
 
-/* Particle background canvas */
+/* Particle/Smoke background canvas */
 #particles {
   position: fixed;
   top:0; left:0;
@@ -205,13 +205,12 @@ color:#ccc;
 [data-parallax]{
 transition: transform 0.2s ease-out;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- Particle background -->
+<!-- Smoke background -->
 <canvas id="particles"></canvas>
 
 <!-- HERO -->
@@ -222,7 +221,7 @@ transition: transform 0.2s ease-out;
 
 <div>
 <div class="profile" data-parallax>
-<img src="https://drive.google.com/uc?export=view&id=YOUR_FILE_ID" alt="Isuru Udayakumara">
+<img src="https://drive.google.com/uc?export=view&id=1Sg6Ho1RhyVYZxaJltvv6tLaRk3XRypMu" alt="Isuru Udayakumara">
 <div>
 <h1>Isuru Udayakumara (MSc)</h1>
 <p>7+ Years Digital Marketing & E Commerce Specialist</p>
@@ -298,54 +297,59 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Particle background
+// Smoke background
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const particlesArray = [];
-const colors = ['#00f0ff','#8a2eff','#ffffff'];
+const smokeParticles = [];
 
-class Particle {
-  constructor(){
-    this.x = Math.random()*canvas.width;
-    this.y = Math.random()*canvas.height;
-    this.size = Math.random()*2 + 1;
-    this.speedX = Math.random()*1 -0.5;
-    this.speedY = Math.random()*1 -0.5;
-    this.color = colors[Math.floor(Math.random()*colors.length)];
+class SmokeParticle {
+  constructor() {
+    this.reset();
   }
-  update(){
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if(this.x>canvas.width) this.x=0;
-    if(this.x<0) this.x=canvas.width;
-    if(this.y>canvas.height) this.y=0;
-    if(this.y<0) this.y=canvas.height;
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = canvas.height + Math.random() * 200;
+    this.size = Math.random() * 80 + 50;
+    this.speedY = Math.random() * 0.3 + 0.1;
+    this.alpha = Math.random() * 0.1 + 0.05;
   }
-  draw(){
-    ctx.fillStyle = this.color;
+  update() {
+    this.y -= this.speedY;
+    if (this.y + this.size < 0) this.reset();
+  }
+  draw() {
+    const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+    gradient.addColorStop(0, `rgba(255,255,255,${this.alpha})`);
+    gradient.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = gradient;
     ctx.beginPath();
-    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
   }
 }
 
-function init(){
-  for(let i=0;i<100;i++){
-    particlesArray.push(new Particle());
+function initSmoke(){
+  for(let i = 0; i < 50; i++){
+    smokeParticles.push(new SmokeParticle());
   }
 }
 
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particlesArray.forEach(p=>{p.update();p.draw();});
-  requestAnimationFrame(animate);
+function animateSmoke(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  smokeParticles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateSmoke);
 }
 
-init();
-animate();
+initSmoke();
+animateSmoke();
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
 </script>
 
 </body>
