@@ -9,7 +9,12 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-body{background:#050505;color:#fff;overflow-x:hidden;}
+body{
+  background: linear-gradient(180deg, #050505, #0a0a0a, #111111);
+  color:#fff;
+  overflow-x:hidden;
+  perspective:1200px; /* Enables 3D effect for children */
+}
 
 /* HERO */
 .hero{
@@ -46,6 +51,8 @@ animation: zoom 20s infinite alternate;
 display:flex;
 align-items:center;
 gap:20px;
+transform-style: preserve-3d;
+transition: transform 0.3s ease;
 }
 
 .profile img{
@@ -54,13 +61,18 @@ height:120px;
 border-radius:50%;
 border:4px solid #fff;
 object-fit:cover;
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
 
 .hero h1{font-size:40px;}
 .hero p{color:#ccc;margin-top:5px;}
 
 /* SECTIONS */
-section{padding:100px 8%;}
+section{
+padding:100px 8%;
+transform-style: preserve-3d;
+transition: transform 0.3s ease;
+}
 
 /* IMPACT */
 .impact{
@@ -75,6 +87,8 @@ border-radius:15px;
 background:linear-gradient(135deg,#00f0ff22,#8a2eff22);
 text-align:center;
 font-size:22px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 /* LIFECYCLE */
@@ -87,6 +101,10 @@ gap:20px;
 .step{
 padding:20px;
 border-left:3px solid #00f0ff;
+background:rgba(255,255,255,0.05);
+border-radius:10px;
+box-shadow:0 8px 25px rgba(0,0,0,0.3);
+transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 /* CASE */
@@ -95,11 +113,14 @@ background:rgba(255,255,255,0.05);
 padding:25px;
 border-radius:15px;
 margin-top:20px;
+box-shadow:0 12px 40px rgba(0,0,0,0.4);
+transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 /* CTA */
 .cta{
 text-align:center;
+transform-style: preserve-3d;
 }
 
 .btn{
@@ -111,6 +132,13 @@ background:linear-gradient(90deg,#00f0ff,#8a2eff);
 color:#000;
 font-weight:600;
 text-decoration:none;
+box-shadow:0 8px 25px rgba(0,0,0,0.4);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover{
+transform: translateY(-5px);
+box-shadow:0 15px 35px rgba(0,0,0,0.6);
 }
 
 .email{
@@ -126,21 +154,26 @@ text-align:center;
 padding:40px;
 color:#777;
 }
+
+/* 3D scroll effect (parallax) */
+[data-parallax]{
+transition: transform 0.2s ease-out;
+}
+
 </style>
 </head>
 
 <body>
 
 <!-- HERO -->
-<section class="hero">
-
+<section class="hero" data-parallax>
 <div class="video-bg">
 <iframe src="https://www.youtube.com/embed/V328AMkg5XQ?autoplay=1&mute=1&controls=0&loop=1&playlist=V328AMkg5XQ&playsinline=1"></iframe>
 </div>
 
 <div>
-<div class="profile">
-<img src="https://imgur.com/a/Bf23oVm">
+<div class="profile" data-parallax>
+<img src="https://i.imgur.com/YOURIMAGE.jpg">
 <div>
 <h1>Isuru Udayakumara (MSc)</h1>
 <p>7+ Years Digital Marketing & E Commerce Specialist</p>
@@ -148,11 +181,10 @@ color:#777;
 </div>
 </div>
 </div>
-
 </section>
 
 <!-- IMPACT -->
-<section>
+<section data-parallax>
 <h2>Growth Impact</h2>
 <div class="impact">
 <div><strong>+200%</strong><br>Brand Awareness</div>
@@ -163,7 +195,7 @@ color:#777;
 </section>
 
 <!-- LIFECYCLE -->
-<section>
+<section data-parallax>
 <h2>How I Drive Growth</h2>
 <div class="lifecycle">
 <div class="step"><strong>01. Research</strong><br>Market, audience & competitor analysis</div>
@@ -175,9 +207,8 @@ color:#777;
 </section>
 
 <!-- CASE STUDIES -->
-<section>
+<section data-parallax>
 <h2>Case Studies</h2>
-
 <div class="card">
 <h3>The Factory Outlet</h3>
 <p>+48% revenue growth through performance marketing & e-commerce optimization.</p>
@@ -192,21 +223,13 @@ color:#777;
 <h3>Homelands Group</h3>
 <p>Leading digital transformation, CRM workflows & full funnel strategy.</p>
 </div>
-
 </section>
 
 <!-- CTA -->
-<section class="cta">
+<section class="cta" data-parallax>
 <h2>Let’s Work Together</h2>
-
-<a class="btn" href="https://wa.me/YOURNUMBER" target="_blank">
-Message Me on WhatsApp
-</a>
-
-<a class="email" href="mailto:isuru.uk123@gmail.com">
-Or Email Me
-</a>
-
+<a class="btn" href="https://wa.me/YOURNUMBER" target="_blank">Message Me on WhatsApp</a>
+<a class="email" href="mailto:isuru.uk123@gmail.com">Or Email Me</a>
 </section>
 
 <!-- FOOTER -->
@@ -215,6 +238,17 @@ Or Email Me
 <p>© 2026 Isuru Udayakumara</p>
 <p>A proud design of Isuru Udayakumara</p>
 </footer>
+
+<script>
+// Parallax 3D scroll effect
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  document.querySelectorAll('[data-parallax]').forEach(el => {
+    const speed = 0.05; // adjust effect strength
+    el.style.transform = `translateZ(0) translateY(${scrolled * speed}px)`;
+  });
+});
+</script>
 
 </body>
 </html>
