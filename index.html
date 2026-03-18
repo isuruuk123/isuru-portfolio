@@ -9,8 +9,16 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+
+:root {
+  --accent-cyan: #00f0ff;
+  --whatsapp-green: linear-gradient(90deg, #00b09b, #96c93d);
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
 body{
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background: #0a0a0c; /* Deep cinematic obsidian */
   color:#fff;
   overflow-x:hidden;
   perspective:1200px;
@@ -24,7 +32,25 @@ body{
   width:100%;
   height:100%;
   z-index:-3;
+  opacity: 0.4;
 }
+
+/* MOBILE NAV */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background: rgba(10, 10, 12, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-logo { font-weight: 700; letter-spacing: 1px; font-size: 1.2rem; }
 
 /* HERO */
 .hero{
@@ -46,192 +72,183 @@ min-height:100vh;
 min-width:177vh;
 transform:translate(-50%,-50%);
 z-index:-2;
-filter:brightness(1.2) contrast(1.2) saturate(1.3);
+filter: brightness(0.7) contrast(1.1) saturate(0.8); /* Cinematic mood */
 transition: transform 10s ease-in-out;
 animation: zoom 20s infinite alternate;
+pointer-events: none;
 }
 
 @keyframes zoom {
   0% { transform: translate(-50%,-50%) scale(1); }
-  100% { transform: translate(-50%,-50%) scale(1.05); }
+  100% { transform: translate(-50%,-50%) scale(1.1); }
 }
 
 /* PROFILE */
 .profile{
 display:flex;
 align-items:center;
-gap:20px;
+gap:25px;
 transform-style: preserve-3d;
 transition: transform 0.3s ease;
+background: rgba(0,0,0,0.4);
+padding: 20px;
+border-radius: 20px;
+backdrop-filter: blur(5px);
+border: 1px solid var(--glass-border);
 }
 
 .profile img{
-width:120px;
-height:120px;
+width:130px;
+height:130px;
 border-radius:50%;
-border:4px solid #fff;
+border:2px solid var(--accent-cyan);
+padding: 5px;
 object-fit:cover;
-box-shadow:0 10px 30px rgba(0,0,0,0.6);
+box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
-.hero h1{font-size:40px;}
-.hero p{color:#ccc;margin-top:5px;}
+.hero h1{font-size:42px; line-height: 1.1;}
+.hero p{color:#999; margin-top:5px; font-weight: 300;}
 
 /* SECTIONS */
 section{
 padding:100px 8%;
 transform-style: preserve-3d;
-transition: transform 0.3s ease;
 }
 
-/* IMPACT - Glassmorphic cards */
+h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-left: 4px solid var(--accent-cyan);
+    padding-left: 15px;
+}
+
+/* IMPACT */
 .impact{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:30px;
-margin-top:50px;
+gap:25px;
 }
 
 .impact div{
-padding:40px 20px;
-border-radius:20px;
-background: rgba(255,255,255,0.05);
+padding:50px 20px;
+border-radius:15px;
+background: var(--glass);
+border: 1px solid var(--glass-border);
 backdrop-filter: blur(15px);
 text-align:center;
-font-size:22px;
-box-shadow:0 8px 30px rgba(0,0,0,0.5);
-transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.3s ease;
-position:relative;
-overflow:hidden;
+transition: all 0.4s ease;
 }
 
 .impact div:hover{
-transform: translateY(-10px) scale(1.05);
-box-shadow:0 20px 50px rgba(0,0,0,0.7);
-background: rgba(255,255,255,0.1);
+transform: translateY(-10px);
+background: rgba(0, 240, 255, 0.05);
+border-color: var(--accent-cyan);
 }
 
 .impact strong{
 display:block;
-font-size:32px;
-color:#00f0ff;
+font-size:36px;
+color: var(--accent-cyan);
 margin-bottom:10px;
 }
 
-/* LIFECYCLE - 3D timeline */
-.lifecycle{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:30px;
-margin-top:50px;
-}
-
+/* STEP CARDS */
 .step{
-padding:25px 20px;
-border-radius:15px;
-background: rgba(255,255,255,0.05);
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
-border-left:3px solid #00f0ff;
-transition: transform 0.5s ease, box-shadow 0.5s ease;
-position:relative;
+padding:30px;
+border-radius:12px;
+background: var(--glass);
+border-left:4px solid var(--accent-cyan);
+margin-bottom: 20px;
+transition: 0.3s;
 }
 
-.step:hover{
-transform: translateY(-8px) scale(1.03);
-box-shadow:0 18px 40px rgba(0,0,0,0.6);
-}
-
-.step strong{
-color:#00f0ff;
-margin-bottom:5px;
-display:block;
-font-size:18px;
-}
-
-/* CASE */
-.card{
-background:rgba(255,255,255,0.05);
-padding:25px;
-border-radius:15px;
-margin-top:20px;
-box-shadow:0 12px 40px rgba(0,0,0,0.4);
-transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.card:hover{
-transform: translateY(-6px);
-box-shadow:0 20px 50px rgba(0,0,0,0.6);
-}
+.step:hover { background: rgba(255,255,255,0.07); }
 
 /* CTA */
-.cta{
-text-align:center;
-transform-style: preserve-3d;
-}
+.cta{ text-align:center; padding: 120px 8%; }
 
 .btn{
 display:inline-block;
 margin-top:20px;
-padding:15px 30px;
-border-radius:40px;
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
-color:#000;
-font-weight:600;
+padding:18px 40px;
+border-radius:50px;
+background: var(--whatsapp-green);
+color:#fff;
+font-weight:700;
 text-decoration:none;
-box-shadow:0 8px 25px rgba(0,0,0,0.4);
-transition: transform 0.3s ease, box-shadow 0.3s ease;
+text-transform: uppercase;
+letter-spacing: 1px;
+box-shadow:0 10px 30px rgba(0, 176, 155, 0.3);
+transition: all 0.3s ease;
 }
 
 .btn:hover{
-transform: translateY(-5px);
-box-shadow:0 15px 35px rgba(0,0,0,0.6);
+transform: scale(1.05);
+box-shadow:0 15px 40px rgba(0, 176, 155, 0.5);
 }
 
 .email{
 display:block;
-margin-top:15px;
-color:#aaa;
+margin-top:25px;
+color:#666;
 text-decoration:none;
+font-size: 0.9rem;
+transition: 0.3s;
 }
+.email:hover { color: var(--accent-cyan); }
 
 /* FOOTER */
 footer{
 text-align:center;
-padding:40px;
-color:#ccc;
+padding:60px 20px;
+border-top: 1px solid var(--glass-border);
+color:#444;
 }
 
-/* 3D scroll effect (parallax) */
-[data-parallax]{
-transition: transform 0.2s ease-out;
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-bar { padding: 15px 5%; }
+  .hero { padding: 40px 5%; align-items: center; justify-content: center; text-align: center; }
+  .video-bg iframe { width: 400vw; height: 100vh; }
+  .profile { flex-direction: column; gap: 15px; width: 100%; }
+  .profile img { width: 110px; height: 110px; }
+  .hero h1 { font-size: 30px; }
+  section { padding: 80px 5%; }
+  h2 { font-size: 24px; }
+  .impact { grid-template-columns: 1fr; }
 }
+
+[data-parallax]{ transition: transform 0.2s ease-out; }
 </style>
 </head>
 
 <body>
 
-<!-- Smoke background -->
+<nav class="nav-bar">
+    <div class="nav-logo">IU.</div>
+    <div style="font-size: 0.8rem; color: var(--accent-cyan);">DIGITAL INTELLIGENCE</div>
+</nav>
+
 <canvas id="particles"></canvas>
 
-<!-- HERO -->
 <section class="hero" data-parallax>
 <div class="video-bg">
-<iframe src="https://www.youtube.com/embed/V328AMkg5XQ?autoplay=1&mute=1&controls=0&loop=1&playlist=V328AMkg5XQ&playsinline=1"></iframe>
+<iframe src="https://www.youtube.com/embed/V328AMkg5XQ?autoplay=1&mute=1&controls=0&loop=1&playlist=V328AMkg5XQ&playsinline=1" frameborder="0" allow="autoplay; encrypted-media"></iframe>
 </div>
 
-<div>
 <div class="profile" data-parallax>
 <img src="Untitled design (3).png" alt="Isuru Udayakumara">
 <div>
-<h1>Isuru Udayakumara (MSc)</h1>
-<p>7+ Years Digital Marketing & E Commerce Specialist</p>
+<h1>Isuru Udayakumara <span style="font-size: 0.5em; vertical-align: middle; color: var(--accent-cyan);">(MSc)</span></h1>
+<p>7+ Years Digital Marketing & E-Commerce Specialist</p>
 <p>Colombo, Sri Lanka</p>
-</div>
 </div>
 </div>
 </section>
 
-<!-- IMPACT -->
 <section data-parallax>
 <h2>Growth Impact</h2>
 <div class="impact">
@@ -242,88 +259,56 @@ transition: transform 0.2s ease-out;
 </div>
 </section>
 
-<!-- LIFECYCLE -->
 <section data-parallax>
 <h2>How I Drive Growth</h2>
-<div class="lifecycle">
 <div class="step"><strong>01. Research</strong>Market, audience & competitor analysis</div>
 <div class="step"><strong>02. Strategy</strong>Full funnel growth planning</div>
 <div class="step"><strong>03. Execution</strong>Paid ads, CRM & content</div>
 <div class="step"><strong>04. Optimization</strong>Data driven performance tuning</div>
 <div class="step"><strong>05. Scaling</strong>Revenue growth systems</div>
-</div>
 </section>
 
-<!-- CASE STUDIES -->
-<section data-parallax>
-<h2>Case Studies</h2>
-<div class="card">
-<h3>The Factory Outlet</h3>
-<p>+48% revenue growth through performance marketing & e-commerce optimization.</p>
-</div>
-
-<div class="card">
-<h3>Kandy Selection</h3>
-<p>+200% awareness & 100% footfall growth via experiential campaigns.</p>
-</div>
-
-<div class="card">
-<h3>Homelands Group</h3>
-<p>Leading digital transformation, CRM workflows & full funnel strategy.</p>
-</div>
-</section>
-
-<!-- CTA -->
 <section class="cta" data-parallax>
 <h2>Let’s Work Together</h2>
-<a class="btn" href="https://wa.me/94779194409" target="_blank">Let's chat on WhatsApp</a>
-<a class="email" href="mailto:isuru.uk123@gmail.com">Or You can Email me</a>
+<a class="btn" href="https://wa.me/94779194409" target="_blank">Chat on WhatsApp</a>
+<a class="email" href="mailto:isuru.uk123@gmail.com">isuru.uk123@gmail.com</a>
 </section>
 
-<!-- FOOTER -->
 <footer>
 <p><em>"Scale beyond limits with digital intelligence."</em></p>
-<p>© 2026 Isuru Udayakumara</p>
-<p>A proud design of Isuru Udayakumara</p>
+<p style="margin-top:10px;">© 2026 Isuru Udayakumara</p>
 </footer>
 
 <script>
-// 3D parallax scroll
+// Parallax & Background Logic
 window.addEventListener('scroll', () => {
   const scrolled = window.scrollY;
   document.querySelectorAll('[data-parallax]').forEach(el => {
     const speed = 0.05;
-    el.style.transform = `translateZ(0) translateY(${scrolled * speed}px)`;
+    el.style.transform = `translateY(${scrolled * speed}px)`;
   });
 });
 
-// Smoke background
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 const smokeParticles = [];
 
 class SmokeParticle {
-  constructor() {
-    this.reset();
-  }
+  constructor() { this.reset(); }
   reset() {
     this.x = Math.random() * canvas.width;
     this.y = canvas.height + Math.random() * 200;
-    this.size = Math.random() * 80 + 50;
-    this.speedY = Math.random() * 0.3 + 0.1;
-    this.alpha = Math.random() * 0.1 + 0.05;
+    this.size = Math.random() * 100 + 50;
+    this.speedY = Math.random() * 0.4 + 0.1;
+    this.alpha = Math.random() * 0.1 + 0.02;
   }
-  update() {
-    this.y -= this.speedY;
-    if (this.y + this.size < 0) this.reset();
-  }
+  update() { this.y -= this.speedY; if (this.y + this.size < 0) this.reset(); }
   draw() {
     const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-    gradient.addColorStop(0, `rgba(255,255,255,${this.alpha})`);
-    gradient.addColorStop(1, 'rgba(255,255,255,0)');
+    gradient.addColorStop(0, `rgba(200,200,255,${this.alpha})`);
+    gradient.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = gradient;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -331,25 +316,14 @@ class SmokeParticle {
   }
 }
 
-function initSmoke(){
-  for(let i = 0; i < 50; i++){
-    smokeParticles.push(new SmokeParticle());
-  }
-}
-
+function initSmoke(){ for(let i = 0; i < 40; i++){ smokeParticles.push(new SmokeParticle()); } }
 function animateSmoke(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   smokeParticles.forEach(p => { p.update(); p.draw(); });
   requestAnimationFrame(animateSmoke);
 }
-
-initSmoke();
-animateSmoke();
-
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
+initSmoke(); animateSmoke();
+window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 </script>
 
 </body>
