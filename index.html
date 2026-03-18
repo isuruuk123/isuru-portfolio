@@ -3,848 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isuru Udayakumara | Digital Marketing Specialist</title>
+    <title>Isuru Udayakumara | Digital Marketing Strategist</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #0a0a0c;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --accent: #3b82f6; /* Electric Blue */
+            --text-main: #e2e8f0;
+            --text-dim: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            line-height: 1.6; 
             overflow-x: hidden;
         }
 
-        /* Custom Properties for LinkedIn Blue Theme */
-        :root {
-            --primary-blue: #0a66c2;
-            --primary-blue-dark: #004182;
-            --secondary-blue: #2977c9;
-            --light-bg: #f8f9fa;
-            --card-bg: white;
-            --text-dark: #0d1117;
-            --text-muted: #656d76;
-            --gradient: linear-gradient(135deg, #0a66c2 0%, #2977c9 50%, #5aa7f5 100%);
-            --shadow: 0 8px 32px rgba(10, 102, 194, 0.15);
-            --shadow-hover: 0 16px 48px rgba(10, 102, 194, 0.25);
-        }
-
-        /* Navigation - Mobile Responsive */
-        .nav {
+        /* --- Background Animation --- */
+        .glow {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            z-index: -1;
         }
 
-        .nav.scrolled {
-            box-shadow: var(--shadow);
-        }
+        /* --- Layout --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1.5rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            transition: color 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-blue);
-            background: rgba(10, 102, 194, 0.1);
-        }
-
-        /* Mobile Menu Button */
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 4px;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-blue);
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            padding: 2rem 1rem;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-            animation: slideInUp 1s ease-out;
-            width: 100%;
-        }
-
-        @keyframes slideInUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        header { 
+            text-align: center; 
+            padding: 4rem 0; 
+            animation: fadeIn 1s ease-out;
         }
 
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.3);
-            margin: 0 auto 2rem;
+            border: 3px solid var(--accent);
+            padding: 5px;
+            margin-bottom: 1.5rem;
             object-fit: cover;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            font-weight: bold;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
         }
 
-        .profile-img:hover {
-            transform: scale(1.05);
-            border-color: rgba(255,255,255,0.6);
-        }
+        h1 { font-size: 2.5rem; letter-spacing: -1px; margin-bottom: 0.5rem; }
+        .tagline { color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
 
-        h1 {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, white 30%, #e8f4fd 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tagline {
-            font-size: clamp(1.1rem, 3vw, 1.4rem);
-            margin-bottom: 1.5rem;
-            opacity: 0.95;
-        }
-
-        .hero-text {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
+        /* --- Bio & Grid --- */
+        .about-section { 
+            background: var(--card-bg); 
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 24px;
             backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            border: 2px solid rgba(255,255,255,0.3);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 0.5rem;
-            min-width: 140px;
-        }
-
-        .cta-button:hover {
-            background: white;
-            color: var(--primary-blue);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        /* Sections */
-        .section {
-            padding: 5rem 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            text-align: center;
             margin-bottom: 3rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
 
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 280px;
-            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3.5rem;
-            font-weight: bold;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-
-        /* Experience Cards */
-        .experiences {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .experience-card {
+        .card {
             background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(10, 102, 194, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            border-radius: 16px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .experience-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
-        }
-
-        .experience-card:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .company {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .position {
-            font-size: 1.2rem;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .dates {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
-        .achievements {
-            list-style: none;
-        }
-
-        .achievements li {
-            padding: 1rem 0;
-            padding-left: 2rem;
-            position: relative;
-            color: var(--text-dark);
-            font-size: 1rem;
-        }
-
-        .achievements li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--primary-blue);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .skill-category {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .skill-category h3 {
-            color: var(--primary-blue);
-            margin-bottom: 2rem;
-            font-size: 1.6rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            justify-content: center;
+        .card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--accent);
         }
 
         .skill-tag {
-            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(10, 102, 194, 0.3);
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(10, 102, 194, 0.1);
+            font-size: 0.85rem;
+            margin: 0.2rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
-        .contact-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
+        /* --- Links & Footer --- */
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin: 2rem 0; }
+        .social-links a { 
+            color: var(--text-dim); 
+            font-size: 1.5rem; 
+            transition: color 0.3s;
         }
+        .social-links a:hover { color: var(--accent); }
 
-        .contact-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            background: var(--gradient);
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+        footer { text-align: center; color: var(--text-dim); padding: 4rem 0; font-size: 0.8rem; }
 
-        .contact-card h3 {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
+        /* --- Animations --- */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .contact-link {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 500;
-            display: block;
-        }
-
-        .contact-link:hover {
-            color: var(--primary-blue);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--text-dark);
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 4rem;
-        }
-
-        /* Scroll Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 0 1rem;
-            }
-            
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(255,255,255,0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: var(--shadow);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu {
-                display: flex;
-            }
-
-            .mobile-menu.active span:nth-child(1) {
-                transform: rotate(45deg) translate(6px, 6px);
-            }
-
-            .mobile-menu.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .mobile-menu.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(6px, -5px);
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
-            }
-
-            .about-image {
-                height: 200px;
-                font-size: 2.5rem;
-            }
-
-            .experiences,
-            .skills-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 3rem 1rem;
-            }
-
-            .cta-button {
-                display: block;
-                margin: 1rem auto;
-                max-width: 250px;
-            }
-
-            .hero {
-                padding: 1rem;
-                min-height: 100vh;
-            }
-
-            .profile-img {
-                width: 140px;
-                height: 140px;
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section {
-                padding: 2rem 1rem;
-            }
-            
-            .experience-card,
-            .skill-category,
-            .contact-card {
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .experiences,
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            }
-            
-            .contact-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-            
-            .about-grid {
-                grid-template-columns: 1fr 2fr;
-            }
+        /* --- Mobile Optimization --- */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 1rem; }
+            .about-section { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav" id="nav">
-        <div class="nav-container">
-            <div class="logo">ISURU</div>
-            <ul class="nav-links" id="navLinks">
-                ><a href="#home" class="nav-link active">Home</a></li>
-                ><a href="#about" class="nav-link">About</a></li>
-                ><a href="#experience" class="nav-link">Experience</a></li>
-                ><a href="#skills" class="nav-link">Skills</a></li>
-                ><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="mobile-menu" id="mobileMenu">
-                <span></span>
-                <span></span>
-                <span></span>
+
+    <div class="glow"></div>
+    
+    <div class="container">
+        <header>
+            <img src="YOUR_UPLOADED_IMAGE_URL" alt="Isuru Udayakumara" class="profile-img">
+            <h1>Isuru Udayakumara (MSc)</h1>
+            <p class="tagline">Digital Marketing | E-Commerce | Performance Marketing | AI</p>
+            
+            <div class="social-links">
+                <a href="https://web.facebook.com/isuru.uk123/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/its.isuru/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/94779194409" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:isuru.uk123@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
-        </div>
-    </nav>
+        </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <!-- Sample professional profile image -->
-            <div class="profile-img">ISURU</div>
-            <h1>Isuru Udayakumara</h1>
-            <p class="tagline">Digital Marketing Specialist | MSc Digital Marketing | E-Com Strategist</p>
-            <p class="hero-text">
-                Transforming brands through data-driven strategies, AI-powered campaigns, and exceptional ROI.
-            </p>
-            <a href="#contact" class="cta-button">Get In Touch</a>
-            <a href="#experience" class="cta-button">View Work</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section fade-in">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-grid">
-            <div class="about-image">DM</div>
-            <div class="about-text fade-in">
-                <p>
-                    Dynamic Digital Marketing Specialist with MSc in Digital Marketing from Asia e University. 
-                    Currently driving E-Commerce growth at <strong>Homelands Group of Companies</strong> through 
-                    innovative strategies and data-driven campaigns that deliver measurable results.
+        <main>
+            <section class="about-section">
+                <h3>About Me</h3>
+                <p style="margin-top: 1rem; color: var(--text-dim);">
+                    Performance-driven Digital Marketing Manager with a Master's in Digital Marketing from Asia e University. I specialize in scaling e-commerce ecosystems through technical SEO, high-fidelity cinematography, and AI-driven growth strategies. I bridge the gap between creative visual storytelling and rigorous data compliance.
                 </p>
-                <p>
-                    Passionate about leveraging AI, SEO, SEM, and social media advertising to transform 
-                    businesses. Proven track record of increasing ROI, customer acquisition, and brand 
-                    visibility across multiple digital platforms.
-                </p>
-                <p>
-                    Colombo-based marketing professional with expertise in both B2B and B2C strategies, 
-                    specializing in sustainable growth through cutting-edge digital solutions.
-                </p>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section fade-in">
-        <h2 class="section-title">Professional Experience</h2>
-        <div class="experiences">
-            <div class="experience-card fade-in">
-                <div class="company">Homelands Group of Companies</div>
-                <div class="position">Digital Marketing & E-Commerce Strategist</div>
-                <div class="dates">2023 - Present | Colombo, Sri Lanka</div>
-                <ul class="achievements">
-                    >Drive 300%+ ROI growth through targeted Google & Meta Ads campaigns</li>
-                    >Implement AI-powered personalization increasing conversion rates by 45%</li>
-                    >Manage multi-channel campaigns generating $2M+ annual revenue</li>
-                </ul>
-            </div>
-            
-            <div class="experience-card fade-in">
-                <div class="company">Previous Digital Marketing Roles</div>
-                <div class="position">SEO/SEM Specialist & Growth Marketer</div>
-                <div class="dates">2020 - 2023</div>
-                <ul class="achievements">
-                    >Ranked 50+ keywords in Google top 3 positions</li>
-                    >Grew organic traffic by 280% through technical SEO</li>
-                    >Built high-performing social media funnels</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section fade-in">
-        <h2 class="section-title">Core Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-category fade-in">
-                <h3>Paid Advertising</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Google Ads</span>
-                    <span class="skill-tag">Meta Ads</span>
-                    <span class="skill-tag">LinkedIn Ads</span>
-                    <span class="skill-tag">TikTok Ads</span>
+            <h2 style="margin-bottom: 1.5rem;">Core Expertise</h2>
+            <div class="grid" style="margin-bottom: 3rem;">
+                <div class="card">
+                    <h4>E-Commerce Operations</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-dim);">Specializing in WooCommerce, Google Merchant Center, and Meta Commerce compliance for enterprise-level retail.</p>
+                </div>
+                <div class="card">
+                    <h4>Performance Ads</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-dim);">Developing high-ROI YouTube 5-second non-skippable campaigns and Meta acquisition funnels.</p>
+                </div>
+                <div class="card">
+                    <h4>Visual Strategy</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-dim);">Technical expertise in ARRI workflows and motion control photography for high-contrast digital assets.</p>
                 </div>
             </div>
-            
-            <div class="skill-category fade-in">
-                <h3>SEO & Analytics</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Technical SEO</span>
-                    <span class="skill-tag">Google Analytics 4</span>
-                    <span class="skill-tag">Search Console</span>
-                    <span class="skill-tag">Ahrefs/SEMrush</span>
-                </div>
-            </div>
-            
-            <div class="skill-category fade-in">
-                <h3>AI & Automation</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">AI Marketing</span>
-                    <span class="skill-tag">ChatGPT/Claude</span>
-                    <span class="skill-tag">Zapier</span>
-                    <span class="skill-tag">Marketing Automation</span>
-                </div>
-            </div>
-            
-            <div class="skill-category fade-in">
-                <h3>E-Commerce</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Shopify</span>
-                    <span class="skill-tag">WooCommerce</span>
-                    <span class="skill-tag">Conversion Rate Opt.</span>
-                    <span class="skill-tag">Funnel Optimization</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section fade-in">
-        <h2 class="section-title">Let's Connect</h2>
-        <div class="contact-grid">
-            <div class="contact-card fade-in">
-                <div class="contact-icon">E</div>
-                <h3>Email</h3>
-                <a href="mailto:isuru.uk123@gmail.com" class="contact-link">isuru.uk123@gmail.com</a>
-            </div>
-            
-            <div class="contact-card fade-in">
-                <div class="contact-icon">P</div>
-                <h3>Phone</h3>
-                <a href="tel:+94779194409" class="contact-link">+94 779 194 409</a>
-            </div>
-            
-            <div class="contact-card fade-in">
-                <div class="contact-icon">F</div>
-                <h3>Facebook</h3>
-                <a href="https://web.facebook.com/isuru.uk123/" target="_blank" class="contact-link">facebook.com/isuru.uk123</a>
-            </div>
-            
-            <div class="contact-card fade-in">
-                <div class="contact-icon">I</div>
-                <h3>Instagram</h3>
-                <a href="https://www.instagram.com/its.isuru/" target="_blank" class="contact-link">@its.isuru</a>
-            </div>
-            
-            <div class="contact-card fade-in">
-                <div class="contact-icon">W</div>
-                <h3>WhatsApp</h3>
-                <a href="https://wa.me/94779194409" target="_blank" class="contact-link">Quick Chat</a>
-            </div>
-        </div>
-    </section>
+            <div class="grid">
+                <div class="card">
+                    <h3>Experience</h3>
+                    <div style="margin-top: 1rem;">
+                        <strong>Manager - Digital Marketing</strong>
+                        <p style="font-size: 0.8rem; color: var(--accent);">BAG.LK • 2025 - Present</p>
+                        <ul style="font-size: 0.85rem; margin-top: 0.5rem; margin-left: 1rem;">
+                            <li>Architected 22-slide SOP for SEO and product creation.</li>
+                            <li>Increased organic visibility using RankMath & custom schemas.</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2026 Isuru Udayakumara. Built with passion for digital excellence.</p>
-    </footer>
+                <div class="card">
+                    <h3>Education & Skills</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;"><strong>MSc in Digital Marketing</strong><br>Asia e University</p>
+                    <div id="skills">
+                        <span class="skill-tag">SEO</span>
+                        <span class="skill-tag">SEM</span>
+                        <span class="skill-tag">Google Ads</span>
+                        <span class="skill-tag">Meta Ads</span>
+                        <span class="skill-tag">WooCommerce</span>
+                        <span class="skill-tag">AI Marketing</span>
+                        <span class="skill-tag">Cinematography</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Designed for Impact. &copy; 2026 Isuru Udayakumara</p>
+            <p style="margin-top: 0.5rem;">+94 77 919 4409 | Colombo, Sri Lanka</p>
+        </footer>
+    </div>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
-
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-                // Close mobile menu
-                mobileMenu.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Navbar scroll effects
+        // Simple scroll reveal effect
         window.addEventListener('scroll', () => {
-            const nav = document.getElementById('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // Active nav link highlighting
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if(cardTop < window.innerHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
                 }
             });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Profile image hover effect
-        const profileImg = document.querySelector('.profile-img');
-        profileImg.addEventListener('mouseenter', () => {
-            profileImg.style.transform = 'scale(1.05) rotate(2deg)';
-        });
-        profileImg.addEventListener('mouseleave', () => {
-            profileImg.style.transform = 'scale(1) rotate(0deg)';
         });
     </script>
 </body>
