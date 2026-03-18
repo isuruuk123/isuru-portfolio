@@ -10,10 +10,20 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 body{
-  background: linear-gradient(180deg, #050505, #0a0a0a, #111111);
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   color:#fff;
   overflow-x:hidden;
-  perspective:1200px; /* Enables 3D effect for children */
+  perspective:1200px;
+  position:relative;
+}
+
+/* Particle background canvas */
+#particles {
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  z-index:-3;
 }
 
 /* HERO */
@@ -74,37 +84,68 @@ transform-style: preserve-3d;
 transition: transform 0.3s ease;
 }
 
-/* IMPACT */
+/* IMPACT - Glassmorphic cards */
 .impact{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+margin-top:50px;
 }
 
 .impact div{
-padding:30px;
-border-radius:15px;
-background:linear-gradient(135deg,#00f0ff22,#8a2eff22);
+padding:40px 20px;
+border-radius:20px;
+background: rgba(255,255,255,0.05);
+backdrop-filter: blur(15px);
 text-align:center;
 font-size:22px;
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
-transition: transform 0.5s ease, box-shadow 0.5s ease;
+box-shadow:0 8px 30px rgba(0,0,0,0.5);
+transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.3s ease;
+position:relative;
+overflow:hidden;
 }
 
-/* LIFECYCLE */
+.impact div:hover{
+transform: translateY(-10px) scale(1.05);
+box-shadow:0 20px 50px rgba(0,0,0,0.7);
+background: rgba(255,255,255,0.1);
+}
+
+.impact strong{
+display:block;
+font-size:32px;
+color:#00f0ff;
+margin-bottom:10px;
+}
+
+/* LIFECYCLE - 3D timeline */
 .lifecycle{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+margin-top:50px;
 }
 
 .step{
-padding:20px;
+padding:25px 20px;
+border-radius:15px;
+background: rgba(255,255,255,0.05);
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
 border-left:3px solid #00f0ff;
-background:rgba(255,255,255,0.05);
-border-radius:10px;
-box-shadow:0 8px 25px rgba(0,0,0,0.3);
 transition: transform 0.5s ease, box-shadow 0.5s ease;
+position:relative;
+}
+
+.step:hover{
+transform: translateY(-8px) scale(1.03);
+box-shadow:0 18px 40px rgba(0,0,0,0.6);
+}
+
+.step strong{
+color:#00f0ff;
+margin-bottom:5px;
+display:block;
+font-size:18px;
 }
 
 /* CASE */
@@ -115,6 +156,11 @@ border-radius:15px;
 margin-top:20px;
 box-shadow:0 12px 40px rgba(0,0,0,0.4);
 transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card:hover{
+transform: translateY(-6px);
+box-shadow:0 20px 50px rgba(0,0,0,0.6);
 }
 
 /* CTA */
@@ -152,7 +198,7 @@ text-decoration:none;
 footer{
 text-align:center;
 padding:40px;
-color:#777;
+color:#ccc;
 }
 
 /* 3D scroll effect (parallax) */
@@ -165,6 +211,9 @@ transition: transform 0.2s ease-out;
 
 <body>
 
+<!-- Particle background -->
+<canvas id="particles"></canvas>
+
 <!-- HERO -->
 <section class="hero" data-parallax>
 <div class="video-bg">
@@ -173,7 +222,7 @@ transition: transform 0.2s ease-out;
 
 <div>
 <div class="profile" data-parallax>
-<img src="https://drive.google.com/uc?export=view&id=1Sg6Ho1RhyVYZxaJltvv6tLaRk3XRypMu">
+<img src="https://drive.google.com/uc?export=view&id=YOUR_FILE_ID" alt="Isuru Udayakumara">
 <div>
 <h1>Isuru Udayakumara (MSc)</h1>
 <p>7+ Years Digital Marketing & E Commerce Specialist</p>
@@ -187,10 +236,10 @@ transition: transform 0.2s ease-out;
 <section data-parallax>
 <h2>Growth Impact</h2>
 <div class="impact">
-<div><strong>+200%</strong><br>Brand Awareness</div>
-<div><strong>+48%</strong><br>Revenue Growth</div>
-<div><strong>100%</strong><br>Footfall Increase</div>
-<div><strong>6+ Years</strong><br>Experience</div>
+<div><strong>+200%</strong>Brand Awareness</div>
+<div><strong>+48%</strong>Revenue Growth</div>
+<div><strong>100%</strong>Footfall Increase</div>
+<div><strong>6+ Years</strong>Experience</div>
 </div>
 </section>
 
@@ -198,11 +247,11 @@ transition: transform 0.2s ease-out;
 <section data-parallax>
 <h2>How I Drive Growth</h2>
 <div class="lifecycle">
-<div class="step"><strong>01. Research</strong><br>Market, audience & competitor analysis</div>
-<div class="step"><strong>02. Strategy</strong><br>Full funnel growth planning</div>
-<div class="step"><strong>03. Execution</strong><br>Paid ads, CRM & content</div>
-<div class="step"><strong>04. Optimization</strong><br>Data driven performance tuning</div>
-<div class="step"><strong>05. Scaling</strong><br>Revenue growth systems</div>
+<div class="step"><strong>01. Research</strong>Market, audience & competitor analysis</div>
+<div class="step"><strong>02. Strategy</strong>Full funnel growth planning</div>
+<div class="step"><strong>03. Execution</strong>Paid ads, CRM & content</div>
+<div class="step"><strong>04. Optimization</strong>Data driven performance tuning</div>
+<div class="step"><strong>05. Scaling</strong>Revenue growth systems</div>
 </div>
 </section>
 
@@ -240,14 +289,63 @@ transition: transform 0.2s ease-out;
 </footer>
 
 <script>
-// Parallax 3D scroll effect
+// 3D parallax scroll
 window.addEventListener('scroll', () => {
   const scrolled = window.scrollY;
   document.querySelectorAll('[data-parallax]').forEach(el => {
-    const speed = 0.05; // adjust effect strength
+    const speed = 0.05;
     el.style.transform = `translateZ(0) translateY(${scrolled * speed}px)`;
   });
 });
+
+// Particle background
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particlesArray = [];
+const colors = ['#00f0ff','#8a2eff','#ffffff'];
+
+class Particle {
+  constructor(){
+    this.x = Math.random()*canvas.width;
+    this.y = Math.random()*canvas.height;
+    this.size = Math.random()*2 + 1;
+    this.speedX = Math.random()*1 -0.5;
+    this.speedY = Math.random()*1 -0.5;
+    this.color = colors[Math.floor(Math.random()*colors.length)];
+  }
+  update(){
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if(this.x>canvas.width) this.x=0;
+    if(this.x<0) this.x=canvas.width;
+    if(this.y>canvas.height) this.y=0;
+    if(this.y<0) this.y=canvas.height;
+  }
+  draw(){
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+
+function init(){
+  for(let i=0;i<100;i++){
+    particlesArray.push(new Particle());
+  }
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particlesArray.forEach(p=>{p.update();p.draw();});
+  requestAnimationFrame(animate);
+}
+
+init();
+animate();
 </script>
 
 </body>
